@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pmp.platformServer.dao.BookClassDao">
+	
+	<select id="findBookClass" parameterType="com.pmp.entity.BookClassEntity" resultType="com.pmp.entity.BookClassEntity">
+			SELECT * FROM bookclass t WHERE t.isDel=0
+			 <if test="bookClassName!=null and bookClassName!='' "> and bookClassName=#{bookClassName}</if>
+			 <if test="isView!=null and isView!='' "> and isView=#{isView}</if>
+	</select>
+	
+	<select id="getBookClassById" parameterType="java.lang.Integer" resultType="com.pmp.entity.BookClassEntity">
+			SELECT * FROM bookclass t WHERE t.isDel=0 and t.id=#{id}
+	</select>
+	
+	<insert id="addBookClass" parameterType="com.pmp.entity.BookClassEntity">
+	    INSERT INTO bookclass(
+				bookClassName,
+				imageUrl,
+				sorl,
+				isView,
+				isDel,
+				createTime,
+				createId
+		)VALUES(
+				#{bookClassName},
+				#{imageUrl},
+				#{sorl},
+				#{isView},
+				#{isDel},
+				#{createTime},
+				#{createId}
+		)
+	</insert>
+	
+	<update id="bookClassDel" parameterType="java.lang.Integer">
+	   update bookclass t set t.isDel=1 where t.id=#{id}
+	</update>
+	
+	<update id="updateBookClass" parameterType="com.pmp.entity.BookClassEntity">
+			update bookclass t set
+			    t.bookClassName=#{bookClassName},
+			    t.imageUrl=#{imageUrl},
+			    t.sorl=#{sorl},
+			    t.isView=#{isView},
+			    t.updateTime=#{updateTime},
+			    t.updateId=#{updateId}
+			 where t.id=#{id}
+	</update>
+	
+
+     
+</mapper>

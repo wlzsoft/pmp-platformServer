@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pmp.platformServer.dao.UserOrgDao">
+	
+	<select id="getUserOrg" parameterType="java.lang.String" resultType="com.pmp.entity.UserOrgEntity">
+			SELECT * FROM userorg t WHERE t.username=#{username} AND t.password =#{password} AND t.isDel=0
+	</select>
+	
+	<select id="findUserOrg" resultType="com.pmp.entity.UserOrgEntity">
+	       select * from userorg t where t.isDel=0
+	        <if test="username!=null and username!=''"> and username=#{username}</if>
+	        <if test="status!=null and status!=''">and status=#{status}</if>
+	</select>
+	
+<!-- 	<select id="findUserOrg" resultType="com.pmp.entity.UserOrgEntity">
+	       SELECT t.* FROM userorg t ,userorg_role a WHERE t.id=a.userOrgId and t.isDel=0
+	        <if test="username!=null and username!=''"> and t.username=#{username}</if>
+	        <if test="status!=null and status!=''">and t.status=#{status}</if>
+	        <if test="roleId!=null and roleId!=''">and a.roleId=#{roleId}</if>
+	</select> -->
+	
+	<select id="getUserOrgById" parameterType="java.lang.Integer" resultType="com.pmp.entity.UserOrgEntity">
+		select * from userorg t where t.isDel=0 and t.id=${id}
+	</select>
+	
+	<update  id="delUserOrg" parameterType="java.lang.Integer">
+	    UPDATE userorg t set t.isDel=1 WHERE t.id=${id}
+	</update>
+	
+	<update id="updateStatus" parameterType="java.lang.Integer">
+	     UPDATE userorg t set t.status=0 WHERE t.id=${id}
+	</update>
+	
+	<update id="userUpdate" parameterType="com.pmp.entity.UserOrgEntity">
+	          update userorg t set 
+	                 t.username=#{username},
+	                 t.realname=#{realname},
+	                 t.status=#{status},
+	                 t.phone=#{phone},
+	                 t.org=#{org},
+	                 t.updateTime=#{updateTime},
+	                 t.updateId=#{updateId}
+	           where t.id=#{id}
+	</update>
+	
+	<insert id="addUserOrg" parameterType="com.pmp.entity.UserOrgEntity">
+		INSERT INTO userorg(
+				username,
+				password,
+				realname,
+				status,
+				phone,
+				org,
+				isDel,
+				createTime,
+				createId
+		)VALUES(
+				#{username},
+				#{password},
+				#{realname},
+				#{status},
+				#{phone},
+				#{org},
+				#{isDel},
+				#{createTime},
+				#{createId}
+		)
+	</insert>
+
+     
+</mapper>

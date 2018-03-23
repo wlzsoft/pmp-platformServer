@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pmp.platformServer.dao.UserInfoDao">
+	
+	<select id="findUserInfo" parameterType="com.pmp.entity.UserInfoEntity" resultType="com.pmp.entity.UserInfoEntity">
+			SELECT * FROM userinfo t WHERE 1=1
+				<if test="username!=null and username!=''"> and username=#{username}</if>
+		        <if test="vipLevel!=null and vipLevel!=''">and vipLevel=#{vipLevel}</if>
+	</select>
+
+	<select id="getUserInfoById" parameterType="java.lang.Integer" resultType="com.pmp.entity.UserInfoEntity">
+		  SELECT * FROM userinfo t WHERE  t.id=${id}
+	</select>
+	
+	<update id="updateUserInfo" parameterType="com.pmp.entity.UserInfoEntity">
+	     	   update userinfo t set 
+	                 t.birthday=#{birthday},
+	                 t.username=#{username},
+	                 t.realname=#{realname},
+	                 t.email=#{email},
+	                 t.telphone=#{telphone},
+	                 t.degree=#{degree},
+	                 t.vipLevel=#{vipLevel},
+	                 t.updateTime=#{updateTime}
+	           where t.id=#{id}
+	</update>
+	
+	<update id="updateStatus" parameterType="java.lang.Integer">
+	         update userinfo t set 
+	                 t.status=0
+	           where t.id=#{id}
+	</update>
+	
+
+
+     
+</mapper>

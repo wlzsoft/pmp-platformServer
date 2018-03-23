@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pmp.platformServer.dao.SubBookDao">
+	
+	<select id="findSubBook" parameterType="com.pmp.platformServer.dto.SubBookListDto" resultType="com.pmp.platformServer.dto.SubBookListDto">
+	    SELECT a.id userInfoId, b.username,c.id bookId,c.bookName,a.subTime  FROM userinfo_sub_book a ,userinfo b ,book c
+				   WHERE a.userInfoId=b.id
+				     AND a.bookId=c.id
+				     <if test="username!=null and username!=''"> AND b.username=#{username}</if>
+				     <if test="bookName!=null and bookName!=''">AND c.bookName==#{bookName}</if>
+				     <if test="vipLevel!=null and vipLevel!=''">AND b.vipLevel=#{vipLevel}</if>
+				     <if test="startTime!=null and startTime!=''">
+				          <![CDATA[ and a.subTime >= #{startTime}]]>
+				     </if>
+				     <if test="endTime!=null and endTime!=''">
+				         <![CDATA[ and a.subTime <= #{endTime}]]>
+				     </if>
+	</select>
+	
+	<update id="updateStatus" parameterType="java.lang.Integer">
+	         update userinfo t set 
+	                 t.status=0
+	           where t.id=#{id}
+	</update>
+	
+
+
+     
+</mapper>

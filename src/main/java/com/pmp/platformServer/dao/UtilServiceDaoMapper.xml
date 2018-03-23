@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pmp.platformServer.dao.UtilServiceDao">
+	
+
+	<select id="getBookClassSelect" resultType="com.pmp.platformServer.dto.BookClassSelectDto">
+	    select id , bookClassName from bookclass t where t.isDel=0
+	</select>
+	
+	<select id="getVipLevelSelect" resultType="com.pmp.platformServer.dto.VipLevelSelectDto">
+	    select id ,levelName from vip_level t where t.isDel=0 and status=1
+	</select>
+
+</mapper>

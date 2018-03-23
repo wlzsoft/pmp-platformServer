@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pmp.platformServer.dao.VipLevelDao">
+	
+	<select id="findVipLevelList"  resultType="com.pmp.entity.VipLevelEntity">
+           select * from vip_level t where t.isDel=0
+	</select>
+	
+	<select id="getVipLevelById" parameterType="java.lang.Integer" resultType="com.pmp.entity.VipLevelEntity" >
+	    select * from vip_level t where  t.isDel=0 and t.id=#{id}
+	</select>
+	
+	<update id="vipSava" parameterType="com.pmp.entity.VipLevelEntity">
+			  update vip_level t set 
+	                 t.levelName=#{levelName},
+	                 t.status=#{status},
+	                 t.updateTime=#{updateTime},
+	                 t.updateId=#{updateId}
+	          where t.id=#{id}
+	</update>
+	
+    <update id="vipDel" parameterType="com.pmp.entity.VipLevelEntity">
+			  update vip_level t set 
+	                 t.isDel=1
+	          where t.id=#{id}
+	</update>
+	
+	<insert id="vipAdd" parameterType="com.pmp.entity.VipLevelEntity">
+	  INSERT INTO vip_level(
+				levelName,
+				status,
+				isDel,
+				createTime,
+				createId
+		)VALUES(
+				#{levelName},
+				#{status},
+				#{isDel},
+				#{createTime},
+				#{createId}
+			)
+	</insert>
+	
+	<select id="findVipLevelPriceById" parameterType="java.lang.Integer" resultType="com.pmp.platformServer.dto.VipLevelPriceDto">
+	   SELECT t.id ,t.subjectId ,a.subjectName,t.price,t.priceStatus FROM viplevel_price t,viplevel_subject a  WHERE t.subjectId=a.id  and t.vipLevelId=#{vipLevelId}
+	</select>
+	
+</mapper>

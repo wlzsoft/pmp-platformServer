@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.pmp.platformServer.dao.BookDao">
+	
+	<select id="findBookList" parameterType="com.pmp.platformServer.dto.BookListDto" resultType="com.pmp.platformServer.dto.BookListDto">
+			SELECT 
+			   a.id,a.bookName ,a.createTime,d.username ,b.bookClassName,b.id bookClassId ,a.updateDetailTime
+			 FROM book a ,
+			      bookclass b,
+			      book_bookclass c,
+			      userinfo d
+			  WHERE a.id=c.bookId
+			    AND b.id=c.bookClassId
+			    AND a.createId=d.id
+			 <if test="bookClassName!=null and bookClassName!='' "> and b.bookClassName=#{bookClassName}</if>
+			 <if test="bookName!=null and bookName!='' "> and a.bookName=#{bookName}</if>
+	</select>
+	
+</mapper>
