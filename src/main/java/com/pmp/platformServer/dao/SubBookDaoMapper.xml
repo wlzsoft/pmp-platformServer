@@ -3,7 +3,7 @@
 <mapper namespace="com.pmp.platformServer.dao.SubBookDao">
 	
 	<select id="findSubBook" parameterType="com.pmp.platformServer.dto.SubBookListDto" resultType="com.pmp.platformServer.dto.SubBookListDto">
-	    SELECT a.id userInfoId, b.username,c.id bookId,c.bookName,a.subTime  FROM userinfo_sub_book a ,userinfo b ,book c
+	    SELECT a.id userInfoId, b.username,c.id bookId,c.bookName,a.subTime  FROM userbook a ,userinfo b ,book c
 				   WHERE a.userInfoId=b.id
 				     AND a.bookId=c.id
 				     <if test="username!=null and username!=''"> AND b.username=#{username}</if>

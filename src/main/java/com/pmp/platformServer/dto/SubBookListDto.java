@@ -25,6 +25,8 @@ public class SubBookListDto {
 	
 	public Integer bookId;
 	
+	public Date subTime;
+	
 	public String startTime ;
 	
 	public String endTime;
@@ -96,5 +98,12 @@ public class SubBookListDto {
 	public void setVipLevel(Integer vipLevel) {
 		this.vipLevel = vipLevel;
 	}
-	
+
+	public Date getSubTime() {
+		return subTime;
+	}
+
+	public void setSubTime(Date subTime) {
+		this.subTime = subTime;
+	}
 }

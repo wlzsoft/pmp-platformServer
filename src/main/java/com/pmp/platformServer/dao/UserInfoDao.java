@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
-import com.pmp.entity.UserInfoEntity;
+import com.pmp.entity.UserEntity;
 
 /**
  * <p><b>Title:</b><i>TODO</i></p>
@@ -24,11 +24,11 @@ import com.pmp.entity.UserInfoEntity;
 public interface UserInfoDao {
 	
 	
-	public List<UserInfoEntity> findUserInfo(UserInfoEntity entity);
+	public List<UserEntity> findUserInfo(UserEntity entity);
 	
-	public UserInfoEntity  getUserInfoById(@Param("id")Integer userInfoId);
+	public UserEntity  getUserInfoById(@Param("id")Integer userInfoId);
 	
-	public void updateUserInfo(UserInfoEntity entity);
+	public void updateUserInfo(UserEntity entity);
 	
 	public void updateStatus(@Param("id")Integer userInfoId);
 	

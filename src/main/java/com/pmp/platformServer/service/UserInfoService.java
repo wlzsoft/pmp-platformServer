@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.pmp.entity.UserInfoEntity;
+import com.pmp.entity.UserEntity;
 import com.pmp.platformServer.dao.UserInfoDao;
 
 /**
@@ -28,18 +28,18 @@ public class UserInfoService {
 	@Autowired
 	private UserInfoDao userInfoDao;
 	
-	public List<UserInfoEntity> findUserInfo(UserInfoEntity entity){
+	public List<UserEntity> findUserInfo(UserEntity entity){
 		return userInfoDao.findUserInfo(entity);
 	}
 	
 	
-	public UserInfoEntity  getUserInfoById(Integer userInfoId){
+	public UserEntity  getUserInfoById(Integer userInfoId){
 		
 		return userInfoDao.getUserInfoById(userInfoId) ;
 	}
 	
 	
-	public void updateUserInfo(UserInfoEntity entity){
+	public void updateUserInfo(UserEntity entity){
 		entity.setUpdateTime(new Date());
 		userInfoDao.updateUserInfo(entity);
 		
