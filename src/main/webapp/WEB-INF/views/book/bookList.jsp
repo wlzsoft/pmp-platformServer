@@ -35,11 +35,11 @@
                     </div>
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label class="control-label" for="bookClassName">课程分类名称</label>
-                            <!-- <input type="text" id="order_id" name="bookClassName"  placeholder="课程分类名称" class="form-control" style="width: 300px"> -->
-                            <select class="form-control m-b" style="width: 290px" name="bookClassName">
+                            <label class="control-label" for="bookClassKey">分类值</label>
+                            <select class="form-control m-b" style="width: 290px" name="bookClassKey">
+                          		    <option value=''>--请选择分类--</option>
                         	        <c:forEach var="dto"  items="${bookClassSelect}">
-                                            <option value="${dto.id}">${dto.bookClassName}</option>
+                                            <option value="${dto.bookClassKey}">${dto.bookClassValue}</option>
                                     </c:forEach>
                             </select>
                         </div>
@@ -77,13 +77,13 @@
                                 	<tr>
 	                                    <td>${resource.id}</td>
 	                                    <td>${resource.bookName}</td>
-	                                    <td>${resource.bookClassName}</td>
+	                                    <td>${resource.bookClassValue}</td>
 	                                    <td>${resource.userName}</td>
 	                                    <td>${resource.createTime}</td>
 	                                    <td>${resource.updateDetailTime}</td>
 	                                    <td class="text-crent">
 	                                        <div class="btn-group">
-	                                            <a onclick="view(${resource.id});">View</a> |
+	                                            <a onclick="bookPrice(${resource.id});">价格</a> 
 	                                        </div>
 	                                    </td>
                                     </tr>
@@ -127,8 +127,8 @@
 
         });
     	  	  
-   	  	  function view(data){
-   	  		window.location.href="/bookClass/bookClassView?bookClassId="+data
+   	  	  function bookPrice(data){
+   	  		window.location.href="/book/bookPrice?bookId="+data
    	      }
    	  	  
 

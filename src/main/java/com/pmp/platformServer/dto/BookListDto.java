@@ -18,7 +18,9 @@ public class BookListDto {
 	
 	public String bookName;
 	
-	public String bookClassName;
+	public String bookClassKey;
+	
+	public String bookClassValue;
 	
 	public Integer bookClassId;
 	
@@ -44,12 +46,12 @@ public class BookListDto {
 		this.bookName = bookName;
 	}
 
-	public String getBookClassName() {
-		return bookClassName;
+	public String getBookClassValue() {
+		return bookClassValue;
 	}
 
-	public void setBookClassName(String bookClassName) {
-		this.bookClassName = bookClassName;
+	public void setBookClassValue(String bookClassValue) {
+		this.bookClassValue = bookClassValue;
 	}
 
 	public Integer getBookClassId() {
@@ -83,6 +85,14 @@ public class BookListDto {
 	public void setUpdateDetailTime(String updateDetailTime) {
 		this.updateDetailTime = updateDetailTime;
 	}
-	
 
+	public String getBookClassKey() {
+		return bookClassKey;
+	}
+
+	public void setBookClassKey(String bookClassKey) {
+		this.bookClassKey = bookClassKey;
+	}
+
+	
 }

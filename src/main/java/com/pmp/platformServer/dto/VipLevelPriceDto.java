@@ -19,6 +19,8 @@ public class VipLevelPriceDto {
 	
 	public Integer id ;
 	
+	public Integer vipLevelId;
+	
 	public Integer subjetId;
 	
 	public String subjectName;
@@ -37,6 +39,14 @@ public class VipLevelPriceDto {
 
 	public Integer getSubjetId() {
 		return subjetId;
+	}
+
+	public Integer getVipLevelId() {
+		return vipLevelId;
+	}
+
+	public void setVipLevelId(Integer vipLevelId) {
+		this.vipLevelId = vipLevelId;
 	}
 
 	public void setSubjetId(Integer subjetId) {

@@ -24,4 +24,19 @@
 	<select id="findSubject" parameterType="com.pmp.entity.VipLevelSubjectEntity">
 	   select * from viplevel_subject t where t.isDel=0;
 	</select>
+	
+	<select id="getLevelPriceById" parameterType="java.lang.Integer" resultType="com.pmp.platformServer.dto.VipLevelPriceDto">
+	    SELECT t.id ,t.price ,t.priceStatus ,t.subjectId ,a.subjectName,t.vipLevelId FROM viplevel_price t ,viplevel_subject a
+		   WHERE t.subjectId=a.id
+		    AND t.id=#{subjectPriceId}
+	</select>
+	
+	<update id="vipPriceUpdate" parameterType="com.pmp.platformServer.dto.VipLevelPriceDto">
+			  update viplevel_price t set 
+	                 t.price=#{price},
+	                 t.priceStatus=#{priceStatus},
+	                 t.updateTime=#{updateTime},
+	                 t.updateId=#{updateId}
+	          where t.id=#{id}
+	</update>
 </mapper>

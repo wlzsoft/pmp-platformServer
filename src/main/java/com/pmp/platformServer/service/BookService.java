@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.pmp.platformServer.dao.BookDao;
 import com.pmp.platformServer.dto.BookListDto;
+import com.pmp.platformServer.dto.BookPriceDto;
 
 /**
  * <p><b>Title:</b><i>TODO</i></p>
@@ -32,5 +33,8 @@ public class BookService {
 		return bookDao.findBookList(dto);
 	}
 
+	public List<BookPriceDto> getBookPrice(Integer bookId){
+		return bookDao.getBookPrice(bookId);
+	}
 	
 }

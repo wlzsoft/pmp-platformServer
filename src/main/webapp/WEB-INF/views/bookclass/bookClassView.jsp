@@ -30,9 +30,15 @@
                         <div class="ibox-content">
                             <form class="form-horizontal">
                                 <div class="form-group">
-                                     <label class="col-lg-2 control-label">课程分类名称</label>
+                                     <label class="col-lg-2 control-label">分类名称</label>
                                      <div class="col-lg-3">
-                                      <input type="text" class="form-control" name="bookClassName" value="${bookClassEntity.bookClassName}"> 
+                                      <input type="text" class="form-control" name="bookClassValue" value="${bookClassEntity.bookClassValue}"> 
+                                     </div>
+                                </div>
+                                <div class="form-group">
+                                     <label class="col-lg-2 control-label">分类值</label>
+                                     <div class="col-lg-3">
+                                      <input type="text" class="form-control" name="bookClassKey" value="${bookClassEntity.bookClassKey}"> 
                                      </div>
                                 </div>
                                 <div class="form-group">

@@ -2,10 +2,12 @@ package com.pmp.platformServer.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.pmp.entity.VipLevelPriceEntity;
 import com.pmp.entity.VipLevelSubjectEntity;
+import com.pmp.platformServer.dto.VipLevelPriceDto;
 
 /**
  * <p><b>Title:</b><i>TODO</i></p>
@@ -26,6 +28,10 @@ public interface VipPriceDao {
    public List<VipLevelSubjectEntity> findSubject();
    
    public void vipPriceAdd(VipLevelPriceEntity entity);
+   
+   public void vipPriceUpdate(VipLevelPriceEntity entity);
+   
+   public VipLevelPriceDto getLevelPriceById(@Param("subjectPriceId")Integer subjectPriceId);
 
 }
 	

@@ -29,8 +29,8 @@
                <form class="form-horizontal" action="/bookClass/bookClassList" method="post">
                     <div class="col-sm-4">
                         <div class="form-group">
-                            <label class="control-label" for="bookClassName">课程分类名称</label>
-                            <input type="text" id="order_id" name="bookClassName"  placeholder="课程分类名称" class="form-control" style="width: 300px">
+                            <label class="control-label" for="bookClassValue">课程分类名称</label>
+                            <input type="text" id="order_id" name="bookClassValue"  placeholder="课程分类名称" class="form-control" style="width: 300px">
                         </div>
                     </div>
                     <div class="col-sm-4">
@@ -63,6 +63,7 @@
                                 <tr>
                                     <th>ID</th>
                                     <th data-hide="phone">分类名称</th>
+                                    <th data-hide="phone">分类值</th>
                                     <th data-hide="phone">图片URL</th>
                                     <th data-hide="phone,tablet" >是否显示</th>
                                     <th data-hide="phone">排序</th>
@@ -75,8 +76,33 @@
                                    <c:forEach var="resource"  items="${bookClassList}">
                                 	<tr>
 	                                    <td>${resource.id}</td>
-	                                    <td>${resource.bookClassName}</td>
-	                                    <td>${resource.imageUrl}</td>
+	                                    <td>
+		                                      <c:choose>
+		                                        <c:when test="${resource.bookClassValue}==''">
+		                                        </c:when>
+		                                        <c:otherwise>
+		                                          ${resource.bookClassValue}
+		                                        </c:otherwise>
+		                                      </c:choose>
+	                                     </td>
+	                                    <td>
+	                                         <c:choose>
+		                                        <c:when test="${resource.bookClassKey}==''">
+		                                        </c:when>
+		                                        <c:otherwise>
+		                                          ${resource.bookClassKey}
+		                                        </c:otherwise>
+		                                      </c:choose>
+	                                    </td>
+	                                    <td>
+	                                    	 <c:choose>
+		                                        <c:when test="${resource.imageUrl}==''">
+		                                        </c:when>
+		                                        <c:otherwise>
+		                                          ${resource.imageUrl}
+		                                        </c:otherwise>
+		                                      </c:choose>
+	                                    </td>
 	                                    <td>
 	                                        <c:if test="${resource.isView=='0'}">否</c:if>
                  							<c:if test="${resource.isView=='1'}">是</c:if>
@@ -96,7 +122,7 @@
                                 </tbody>
                                 <tfoot>
 	                                <tr>
-	                                    <td colspan="8">
+	                                    <td colspan="9">
 	                                        <ul class="pagination pull-right"></ul>
 	                                    </td>
 	                                </tr>
@@ -122,9 +148,15 @@
 				<div class="modal-body">
 				   <form class="form-horizontal" action="/bookClass/bookClassAdd" method="post">
 	                   <div class="form-group">
-	                       <label class="col-sm-2 control-label">课程分类名称</label>
+	                       <label class="col-sm-2 control-label">分类名称</label>
 	                       <div class="col-sm-2" style="width: 290px">
-	                             <input type="text" class="form-control" name="bookClassName">
+	                             <input type="text" class="form-control" name="bookClassValue">
+	                       </div>
+	                   </div>
+         	           <div class="form-group">
+	                       <label class="col-sm-2 control-label">分类值</label>
+	                       <div class="col-sm-2" style="width: 290px">
+	                             <input type="text" class="form-control" name="bookClassKey">
 	                       </div>
 	                   </div>
 	                   <div class="form-group">

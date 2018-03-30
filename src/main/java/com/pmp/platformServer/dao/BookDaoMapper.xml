@@ -4,16 +4,28 @@
 	
 	<select id="findBookList" parameterType="com.pmp.platformServer.dto.BookListDto" resultType="com.pmp.platformServer.dto.BookListDto">
 			SELECT 
-			   a.id,a.bookName ,a.createTime,d.username ,b.bookClassName,b.id bookClassId ,a.updateDetailTime
+			   a.id,a.bookName ,a.createTime,d.username ,b.bookClassValue,b.bookClassKey,b.id bookClassId ,a.updateDetailTime
 			 FROM book a ,
 			      bookclass b,
 			      book_bookclass c,
 			      userinfo d
 			  WHERE a.id=c.bookId
-			    AND b.id=c.bookClassId
+			    AND b.bookClassKey=c.bookClassKey
 			    AND a.createId=d.id
-			 <if test="bookClassName!=null and bookClassName!='' "> and b.bookClassName=#{bookClassName}</if>
+			 <if test="bookClassKey!=null and bookClassKey!=''"> and b.bookClassKey=#{bookClassKey}</if>
 			 <if test="bookName!=null and bookName!='' "> and a.bookName=#{bookName}</if>
+	</select>
+	
+	<select id="getBookPrice" parameterType="java.lang.Integer" resultType="com.pmp.platformServer.dto.BookPriceDto">
+			SELECT a.bookId,
+					b.levelName,
+					a.price,
+					a.`status`,
+					a.startTime,
+					a.endTime 
+			FROM bookprice a ,vip_level b 
+			WHERE a.vipLevel=b.id 
+			  and a.bookId=#{bookId}
 	</select>
 	
 </mapper>

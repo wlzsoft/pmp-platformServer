@@ -84,7 +84,7 @@
 	                                    <td>${resource.registerTime}</td>
 	                                    <td>${resource.isAuthor}</td>
 	                                    <td>${resource.vipLevel}</td>
-	                                    <td>${resource.lastlogTime}</td>
+	                                    <td>${resource.lastloginTime}</td>
 	                                    <td>
                                  			<c:if test="${resource.status=='1'}">正常</c:if>
                  							<c:if test="${resource.status=='0'}">封锁</c:if>

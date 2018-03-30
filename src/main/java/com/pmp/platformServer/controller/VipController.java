@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.pmp.entity.VipLevelEntity;
@@ -79,9 +80,16 @@ public class VipController {
 		return  "redirect:/vip/vipPrice?vipLevelId="+entity.getVipLevelId();
 	}
 	
+	@ResponseBody
 	@RequestMapping("/vipPriceEdit")
-	public String vipPriceEdit(HttpServletRequest request ,HttpServletResponse response, ModelAndView model,VipLevelPriceEntity entity){
-		 vipLevelPriceService.vipPriceAdd(entity);
+	public VipLevelPriceDto vipPriceEdit(HttpServletRequest request ,HttpServletResponse response, ModelAndView model,Integer id){
+		VipLevelPriceDto dto = vipLevelPriceService.getLevelPriceById(id);
+		return  dto;
+	}
+	
+	@RequestMapping("/vipPriceUpdate")
+	public String vipPriceUpdate(HttpServletRequest request ,HttpServletResponse response, ModelAndView model,VipLevelPriceEntity entity){
+		 vipLevelPriceService.vipPriceUpdate(entity);
 		return  "redirect:/vip/vipPrice?vipLevelId="+entity.getVipLevelId();
 	}
 

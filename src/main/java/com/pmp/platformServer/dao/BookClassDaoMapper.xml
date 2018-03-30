@@ -4,7 +4,7 @@
 	
 	<select id="findBookClass" parameterType="com.pmp.entity.BookClassEntity" resultType="com.pmp.entity.BookClassEntity">
 			SELECT * FROM bookclass t WHERE t.isDel=0
-			 <if test="bookClassName!=null and bookClassName!='' "> and bookClassName=#{bookClassName}</if>
+			 <if test="bookClassValue!=null and bookClassValue!='' "> and bookClassValue=#{bookClassValue}</if>
 			 <if test="isView!=null and isView!='' "> and isView=#{isView}</if>
 	</select>
 	
@@ -14,7 +14,8 @@
 	
 	<insert id="addBookClass" parameterType="com.pmp.entity.BookClassEntity">
 	    INSERT INTO bookclass(
-				bookClassName,
+				bookClassKey,
+				bookClassValue,
 				imageUrl,
 				sorl,
 				isView,
@@ -22,7 +23,8 @@
 				createTime,
 				createId
 		)VALUES(
-				#{bookClassName},
+				#{bookClassKey},
+				#{bookClassValue},
 				#{imageUrl},
 				#{sorl},
 				#{isView},
@@ -38,7 +40,8 @@
 	
 	<update id="updateBookClass" parameterType="com.pmp.entity.BookClassEntity">
 			update bookclass t set
-			    t.bookClassName=#{bookClassName},
+			    t.bookClassValue=#{bookClassValue},
+			    t.bookClassKey=#{bookClassKey},
 			    t.imageUrl=#{imageUrl},
 			    t.sorl=#{sorl},
 			    t.isView=#{isView},

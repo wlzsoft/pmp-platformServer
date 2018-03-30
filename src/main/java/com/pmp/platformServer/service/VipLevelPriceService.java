@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.pmp.entity.VipLevelPriceEntity;
 import com.pmp.platformServer.dao.VipPriceDao;
+import com.pmp.platformServer.dto.VipLevelPriceDto;
 
 /**
  * <p><b>Title:</b><i>TODO</i></p>
@@ -33,5 +34,14 @@ public class VipLevelPriceService {
 		entity.setCreateTime(new Date());
 		vipPriceDao.vipPriceAdd(entity);
 	}
-
+	
+	public void vipPriceUpdate(VipLevelPriceEntity entity){
+		entity.setUpdateId(1);
+		entity.setUpdateTime(new Date());
+		vipPriceDao.vipPriceUpdate(entity);
+	}
+	
+	public VipLevelPriceDto getLevelPriceById(Integer subjectPriceId){
+		return vipPriceDao.getLevelPriceById(subjectPriceId);
+	}
 }

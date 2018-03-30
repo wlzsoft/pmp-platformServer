@@ -16,7 +16,9 @@ public class BookClassSelectDto {
 	
 	public Integer id ;
 	
-	public String bookClassName;
+	public String bookClassKey;
+	
+	public String bookClassValue;
 
 	public Integer getId() {
 		return id;
@@ -26,14 +28,20 @@ public class BookClassSelectDto {
 		this.id = id;
 	}
 
-	public String getBookClassName() {
-		return bookClassName;
+	public String getBookClassKey() {
+		return bookClassKey;
 	}
 
-	public void setBookClassName(String bookClassName) {
-		this.bookClassName = bookClassName;
+	public void setBookClassKey(String bookClassKey) {
+		this.bookClassKey = bookClassKey;
 	}
-	
-	
+
+	public String getBookClassValue() {
+		return bookClassValue;
+	}
+
+	public void setBookClassValue(String bookClassValue) {
+		this.bookClassValue = bookClassValue;
+	}
 
 }

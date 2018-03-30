@@ -2,9 +2,11 @@ package com.pmp.platformServer.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.pmp.platformServer.dto.BookListDto;
+import com.pmp.platformServer.dto.BookPriceDto;
 
 /**
  * <p><b>Title:</b><i>TODO</i></p>
@@ -23,5 +25,7 @@ import com.pmp.platformServer.dto.BookListDto;
 public interface BookDao {
 	
 	public List<BookListDto> findBookList(BookListDto dto);
+	
+	public List<BookPriceDto> getBookPrice(@Param("bookId")Integer bookId);
 
 }

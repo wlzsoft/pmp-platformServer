@@ -31,7 +31,7 @@
                             <button class="btn btn-sm btn-primary  m-t-n-xs" type="button" data-toggle="modal" data-target="#myModal"><strong>新增</strong></button>
                         </div>
                         <div class="ibox-content">
-                        	<table class="footable table table-stripped toggle-arrow-tiny" data-page-size="15">
+                        	<table id="priceList" class="footable table table-stripped toggle-arrow-tiny" data-page-size="15">
                         		<thead>
                                 <tr>
                                     <th>ID</th>
@@ -55,17 +55,10 @@
                                     </tr>
                                    </c:forEach>
                                 </tbody>
-                                <tfoot>
-	                                <tr>
-	                                    <td colspan="4">
-	                                        <ul class="pagination pull-right"></ul>
-	                                    </td>
-	                                </tr>
-                                </tfoot>
                         	</table>
                         </div>
                        <div class="modal-footer">
-						  <button type="button" class="btn btn-default" data-dismiss="modal">返回</button>
+						  <button type="button" class="btn btn-default" data-dismiss="modal" id="closeWin">返回</button>
 					   </div>
                     </div>
                 </div>
@@ -124,6 +117,54 @@
 		</div><!-- /.modal -->
 	</nav>
 	</div>
+	
+	 <!-- 科目价格修改 -->
+	<div class="modal fade" id="editPriceModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+						&times;
+					</button>
+					<h5 class="modal-title">科目价格修改</h5>
+				</div>
+				<div class="modal-body">
+				   <form class="form-horizontal" action="/vip/vipPriceUpdate" method="post">
+				       <input type="hidden" name="id" id="subjectId_edit">
+				       <input type="hidden" name="vipLevelId" id="vipLevelId_edit">
+	                   <div class="form-group">
+	                       <label class="col-sm-2 control-label">科目名称</label>
+	                       <div class="col-md-3">
+	                           <input type="text" class="form-control" name="subjectName" id="subjectName_edit">
+	                        </div>
+	                   </div>
+	                   <div class="form-group">
+	                       <label class="col-sm-2 control-label">价格</label>
+	                       <div class="col-sm-2" style="width: 290px">
+	                       		<input type="text" class="form-control" name="price" id="price_edit">
+	                       </div>
+	                   </div>
+	                   <div class="form-group">
+	                       <label class="col-sm-2 control-label">状态</label>
+	                       <div class="col-md-3">
+	                            <select class="form-control m-b" style="width: 290px" name="priceStatus" id="priceStatus_edit">
+                                      <option value="1">启动</option>
+                                      <option value="0">禁用</option>
+	                            </select>
+	                        </div>
+	                   </div>
+	                   <div class="modal-footer">
+						  <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						  <button type="submit" class="btn btn-primary" >保存</button>
+					   </div>
+            	  </form>
+				</div>
+
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal -->
+	 </nav>
+	</div>
+	
    
 </body>
     <!-- Mainly scripts -->
@@ -144,12 +185,38 @@
     <!-- Page-Level Scripts -->
     <script>
         $(document).ready(function() {
-
             $('.footable').footable();
+            
+            $('#closeWin').click(function(){
+            	window.location.href="/vip/vipList"
+            });
         });
         
 	  	function edit(data){
-   	  		window.location.href="/vip/vipPriceEdit?id="+data
+	  		$.ajax({
+	  			url:"/vip/vipPriceEdit.json",
+	  			data:{
+	  				id:data
+	  				},
+	  			dataType:"json",
+	  			type:"POST",
+	  			success: function(dto){
+	  				debugger;
+	  			    var subjectId_edit =dto.id;
+	  			    var vipLevelId_edit =dto.vipLevelId;
+	  			    var subjectName_edit = dto.subjectName;
+	  			    var price_edit =dto.price;
+	  			    var priceStatus_edit = dto.priceStatus;
+	  			    $("#subjectId_edit").val(subjectId_edit);
+	  			    $("#vipLevelId_edit").val(vipLevelId_edit);
+	  			    $("#subjectName_edit").val(subjectName_edit);
+	  			    $("#price_edit").val(price_edit);
+	  			    $("#priceStatus_edit").val(priceStatus_edit);
+	  			    
+	  			   $('#editPriceModal').modal('show') 
+	  			 }
+	  		});
+	  		
    	    }
 
     </script>

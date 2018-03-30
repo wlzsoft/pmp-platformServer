@@ -4,7 +4,7 @@
 	
 
 	<select id="getBookClassSelect" resultType="com.pmp.platformServer.dto.BookClassSelectDto">
-	    select id , bookClassName from bookclass t where t.isDel=0
+	    select id , bookClassKey, bookClassValue from bookclass t where t.isDel=0
 	</select>
 	
 	<select id="getVipLevelSelect" resultType="com.pmp.platformServer.dto.VipLevelSelectDto">

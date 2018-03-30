@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.pmp.platformServer.dto.BookClassSelectDto;
 import com.pmp.platformServer.dto.BookListDto;
+import com.pmp.platformServer.dto.BookPriceDto;
 import com.pmp.platformServer.service.BookService;
 import com.pmp.platformServer.service.UtilService;
 
@@ -48,9 +49,11 @@ public class BookController {
 	}
 	
 	
-	@RequestMapping("/bookView")
-	public ModelAndView bookView(HttpServletRequest request ,HttpServletResponse response, ModelAndView model,Integer  bookId){
-		model.setViewName("book/bookView");	
+	@RequestMapping("/bookPrice")
+	public ModelAndView bookView(HttpServletRequest request ,HttpServletResponse response, ModelAndView model,Integer bookId){
+		List<BookPriceDto> bookPriceList = bookService.getBookPrice(bookId);
+		model.addObject("bookPrice", bookPriceList);
+		model.setViewName("book/bookPrice");	
 		return model;
 	}
 	

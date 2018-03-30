@@ -97,13 +97,13 @@
                                 <tbody>
                                   <c:forEach var="resource"  items="${subBookList}">
                                 	<tr>
-	                                    <td>${resource.id}</td>
+	                                    <td>${resource.userInfoId}</td>
 	                                    <td>${resource.username}</td>
 	                                    <td>${resource.bookName}</td>
-	                                    <td></td>
+	                                    <td>${resource.subTime}</td>
 	                                    <td> 
-                                 			<c:if test="${resource.status=='1'}">是</c:if>
-                 							<c:if test="${resource.status=='0'}">否</c:if>
+     <%--                             		<c:if test="${resource.status=='1'}">是</c:if>
+                 							<c:if test="${resource.status=='0'}">否</c:if> --%>
 	                                    </td>
                                     </tr>
                                    </c:forEach>
