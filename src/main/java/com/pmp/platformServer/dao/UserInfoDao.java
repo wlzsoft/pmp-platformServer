@@ -6,6 +6,8 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.pmp.entity.UserEntity;
+import com.pmp.platformServer.dto.UserLevelDto;
+import com.pmp.platformServer.dto.UserSubBookDto;
 
 /**
  * <p><b>Title:</b><i>TODO</i></p>
@@ -31,5 +33,9 @@ public interface UserInfoDao {
 	public void updateUserInfo(UserEntity entity);
 	
 	public void updateStatus(@Param("id")Integer userInfoId);
+	
+	public List<UserLevelDto>  getUserBuyVip(@Param("id")Integer userInfoId);
+	
+	public List<UserSubBookDto>  getUserSubBook(@Param("id")Integer userInfoId);
 	
 }

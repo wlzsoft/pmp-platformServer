@@ -91,8 +91,8 @@
 	                                    </td>
 	                   	                <td class="text-crent">
 	                                        <div class="btn-group">
-	                                        	<a onclick="view(${resource.id});">VIP购买明细</a> |
-	                                            <a onclick="view(${resource.id});">订阅明细</a> |
+	                                        	<a onclick="buyVip(${resource.id});">VIP购买明细</a> |
+	                                            <a onclick="subBook(${resource.id});">订阅明细</a> |
 	                                            <a onclick="updataStatus(${resource.id});">封锁</a> |
 	                                        </div>
 	                                    </td>
@@ -183,14 +183,22 @@
 
         });
         
-    	  function updataStatus(data){
-    	   		 var answer = confirm('是否封锁');
-    	   		  if(answer)
-    	   		  {
-    	   			window.location.href="/userInfo/updateStatus?userInfoId="+data
-    	   		  }
-    	      }
+    	function updataStatus(data){
+   	   		 var answer = confirm('是否封锁');
+   	   		  if(answer)
+   	   		  {
+   	   			window.location.href="/userInfo/updateStatus?userInfoId="+data
+   	   		  }
+    	}
+    	
+    	function subBook(data){
+    		window.location.href="/userInfo/userSubBook?userInfoId="+data
+    	}
 
+    	function buyVip(data){
+    		window.location.href="/userInfo/userBuyVip?userInfoId="+data
+    	}
+    	
     </script>
 </html>
 </html>

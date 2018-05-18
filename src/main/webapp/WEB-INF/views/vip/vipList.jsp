@@ -77,13 +77,6 @@
 	                                    </tr>
 	                                 </c:forEach>
                                 </tbody>
-                                <tfoot>
-	                                <tr>
-	                                    <td colspan="5">
-	                                        <ul class="pagination pull-right"></ul>
-	                                    </td>
-	                                </tr>
-                                </tfoot>
                         	</table>
                         </div>
                     </div>

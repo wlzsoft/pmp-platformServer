@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.pmp.entity.UserEntity;
+import com.pmp.platformServer.dto.UserLevelDto;
+import com.pmp.platformServer.dto.UserSubBookDto;
 import com.pmp.platformServer.dto.VipLevelSelectDto;
 import com.pmp.platformServer.service.UserInfoService;
 import com.pmp.platformServer.service.UtilService;
@@ -57,4 +59,36 @@ public class UserInfoController {
 		return  "redirect:/userInfo/userInfoList";
 	} 
 
+	/**
+	 * 用户订阅练课程明细
+	 * @param request
+	 * @param response
+	 * @param model
+	 * @param userInfoId
+	 * @return
+	 */
+	@RequestMapping("/userSubBook")
+	public ModelAndView userSubBook(HttpServletRequest request ,HttpServletResponse response, ModelAndView model,Integer userInfoId){
+		List<UserSubBookDto> userSubBook = userInfoService.getUserSubBook(userInfoId);
+		model.addObject("userSubBook", userSubBook);
+		model.setViewName("vipuser/userSubBookList");
+		return  model;
+	} 
+	
+	/**
+	 * 用户购买VIP明细
+	 * @param request
+	 * @param response
+	 * @param model
+	 * @param userInfoId
+	 * @return
+	 */
+	@RequestMapping("/userBuyVip")
+	public ModelAndView userBuyVip(HttpServletRequest request ,HttpServletResponse response, ModelAndView model,Integer userInfoId){
+		List<UserLevelDto> userLevel = userInfoService.getUserBuyVip(userInfoId);
+		model.addObject("userLevel", userLevel);
+		model.setViewName("vipuser/userBuyVipList");
+		return  model;
+	} 
+	
 }

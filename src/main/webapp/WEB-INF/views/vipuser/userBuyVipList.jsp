@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
+ <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+ <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -17,6 +17,8 @@
     <link href="../../../css/animate.css" rel="stylesheet">
     <link href="../../../css/style.css" rel="stylesheet">
     <link href="../../../css/plugins/datapicker/datepicker3.css" rel="stylesheet">
+    <link href="../../../css/plugins/dropzone/basic.css" rel="stylesheet">
+    <link href="../../../css/plugins/dropzone/dropzone.css" rel="stylesheet">
 
 </head>
 
@@ -28,51 +30,45 @@
               	<div class="col-lg-12">
                     <div class="ibox">
                         <div class="ibox-title">
-							<strong>课程价格</strong>
+                            <strong>用户VIP购买明细</strong>
                         </div>
                         <div class="ibox-content">
                         	<table class="footable table table-stripped toggle-arrow-tiny" data-page-size="15">
                         		<thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th data-hide="phone">会员级别</th>
-                                    <th data-hide="phone">价格</th>
+                                    <th data-hide="phone">会员等级</th>
                                     <th data-hide="phone">开始时间</th>
                                     <th data-hide="phone">结束时间</th>
-                                    <th data-hide="phone">状态</th>
+                                    <th data-hide="phone">价格</th>
                                 </tr>
                                 </thead>
                                 <tbody>
-                                   <c:forEach var="resource"  items="${bookPrice}">
+                                  <c:forEach var="resource"  items="${userLevel}">
                                 	<tr>
-                                		<td>${resource.id}</td>
-	                                    <td>${resource.levelName}个月</td>
-	                                    <td>${resource.price}</td>
+	                                    <td>${resource.id}</td>
+	                                    <td>${resource.levelName}</td>
 	                                    <td>${resource.startTime}</td>
 	                                    <td>${resource.endTime}</td>
-	                                    <td>${resource.status}</td>
+	                                    <td>${resource.price}</td>
                                     </tr>
-                                   </c:forEach>
+                                  </c:forEach>
                                 </tbody>
                                 <tfoot>
 	                                <tr>
-	                                    <td colspan="4">
+	                                    <td colspan="5">
 	                                        <ul class="pagination pull-right"></ul>
 	                                    </td>
 	                                </tr>
                                 </tfoot>
                         	</table>
                         </div>
-                       <div class="modal-footer">
-						  <button type="button" class="btn btn-default" data-dismiss="modal" id="closeWin">返回</button>
-					   </div>
                     </div>
                 </div>
           </div>
      </div>
    </nav>
    </div>
-   
 </body>
     <!-- Mainly scripts -->
     <script src="../../../js/jquery-2.1.1.js"></script>
@@ -94,15 +90,8 @@
         $(document).ready(function() {
 
             $('.footable').footable();
-            
-            $('#closeWin').click(function(){
-            	window.location.href="/book/bookList"
-            });
+
         });
-        
-	  	function edit(data){
-   	  		window.location.href="/vip/vipPriceEdit?id="+data
-   	    }
 
     </script>
 </html>

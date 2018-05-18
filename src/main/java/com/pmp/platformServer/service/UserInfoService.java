@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import com.pmp.entity.UserEntity;
 import com.pmp.platformServer.dao.UserInfoDao;
+import com.pmp.platformServer.dto.UserLevelDto;
+import com.pmp.platformServer.dto.UserSubBookDto;
 
 /**
  * <p><b>Title:</b><i>TODO</i></p>
@@ -48,6 +50,14 @@ public class UserInfoService {
 	public void updateStatus(Integer userInfoId){
 		userInfoDao.updateStatus(userInfoId);
 		
+	}
+	
+	public List<UserLevelDto>  getUserBuyVip(Integer userInfoId){
+		return userInfoDao.getUserBuyVip(userInfoId);
+	}
+	
+	public List<UserSubBookDto>  getUserSubBook(Integer userInfoId){
+		return userInfoDao.getUserSubBook(userInfoId);
 	}
 
 }

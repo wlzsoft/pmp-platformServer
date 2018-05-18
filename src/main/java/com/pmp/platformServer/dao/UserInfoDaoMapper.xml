@@ -31,6 +31,17 @@
 	           where t.id=#{id}
 	</update>
 	
+	<select id="getUserBuyVip" parameterType="java.lang.Integer" resultType="com.pmp.platformServer.dto.UserLevelDto">
+		SELECT a.id ,a.userInfoId ,b.levelName,a.startTime ,a.endTime,a.price FROM userinfo_level a , vip_level b
+		  WHERE a.vipLevelId =b.id
+		   AND a.userInfoId=#{id}
+	</select>
+	
+	<select id="getUserSubBook" parameterType="java.lang.Integer" resultType="com.pmp.platformServer.dto.UserSubBookDto" >
+			SELECT a.bookId,b.bookName,a.subTime,a.lastTime,a.userId FROM userbook a, book b
+		   WHERE a.bookId=b.id
+		     AND a.userId=#{id}
+	</select>
 
 
      
