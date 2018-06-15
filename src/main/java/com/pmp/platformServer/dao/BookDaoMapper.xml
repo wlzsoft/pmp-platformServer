@@ -28,4 +28,23 @@
 			  and a.bookId=#{bookId}
 	</select>
 	
+	<select id="getBookVer" parameterType="java.lang.Integer" resultType="com.pmp.platformServer.dto.BookBranchDto">
+			SELECT 
+			   t.id,
+			   t.bookId,
+			   t.bookName,
+			   t.createTime,
+			   t.auditorTime,
+			   t.auditorId,
+			   t.version,
+			   t.status,
+			   t.remark
+			From book_branch t 
+			where t.bookId=#{bookId}
+	</select>
+	
+	<update id="auditor" parameterType="com.pmp.entity.BookBranchEntity"  >
+	   update book_branch t set t.status=#{status} ,t.auditorTime=#{auditorTime} WHERE t.id=#{id}
+	</update>
+	
 </mapper>

@@ -5,6 +5,8 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
+import com.pmp.entity.BookBranchEntity;
+import com.pmp.platformServer.dto.BookBranchDto;
 import com.pmp.platformServer.dto.BookListDto;
 import com.pmp.platformServer.dto.BookPriceDto;
 
@@ -27,5 +29,11 @@ public interface BookDao {
 	public List<BookListDto> findBookList(BookListDto dto);
 	
 	public List<BookPriceDto> getBookPrice(@Param("bookId")Integer bookId);
+	
+	public List<BookBranchDto> getBookVer(@Param("bookId")Integer bookId);
+	
+	public void auditor(@Param("id")Integer id,@Param("status")Integer status);
+	
+	public void auditor(BookBranchEntity entity);
 
 }

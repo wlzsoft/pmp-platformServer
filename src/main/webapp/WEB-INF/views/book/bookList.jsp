@@ -84,6 +84,7 @@
 	                                    <td class="text-crent">
 	                                        <div class="btn-group">
 	                                            <a onclick="bookPrice(${resource.id});">价格</a> 
+	                                            <a onclick="bookVer(${resource.id});">审核管理</a>
 	                                        </div>
 	                                    </td>
                                     </tr>
@@ -130,6 +131,10 @@
    	  	  function bookPrice(data){
    	  		window.location.href="/book/bookPrice?bookId="+data
    	      }
+   	  	  
+   	  	  function bookVer(data){
+     	  		window.location.href="/book/bookVer?bookId="+data
+  	      }
    	  	  
 
     </script>

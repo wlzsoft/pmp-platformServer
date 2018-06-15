@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.pmp.platformServer.dto.BookBranchDto;
 import com.pmp.platformServer.dto.BookClassSelectDto;
 import com.pmp.platformServer.dto.BookListDto;
 import com.pmp.platformServer.dto.BookPriceDto;
@@ -56,6 +58,25 @@ public class BookController {
 		model.setViewName("book/bookPrice");	
 		return model;
 	}
+	
+	@RequestMapping("/bookVer")
+	public ModelAndView bookVer(HttpServletRequest request ,HttpServletResponse response, ModelAndView model,Integer bookId){
+		List<BookBranchDto> bookVerList = bookService.getBookVer(bookId);
+		model.addObject("bookVerList", bookVerList);
+		model.setViewName("book/bookVer");	
+		return model;
+	}
+	
+	@RequestMapping("/auditor")
+	public ModelAndView auditor(HttpServletRequest request ,HttpServletResponse response, ModelAndView model,Integer id,Integer status,Integer bookId){
+		bookService.auditor(id,status);
+		List<BookBranchDto> bookVerList = bookService.getBookVer(bookId);
+		model.addObject("bookVerList", bookVerList);
+		model.setViewName("book/bookVer");
+		return model;
+	}
+	
+	
 	
 	
 }

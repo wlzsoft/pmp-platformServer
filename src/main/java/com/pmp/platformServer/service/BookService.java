@@ -1,11 +1,14 @@
 package com.pmp.platformServer.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.pmp.entity.BookBranchEntity;
 import com.pmp.platformServer.dao.BookDao;
+import com.pmp.platformServer.dto.BookBranchDto;
 import com.pmp.platformServer.dto.BookListDto;
 import com.pmp.platformServer.dto.BookPriceDto;
 
@@ -35,6 +38,18 @@ public class BookService {
 
 	public List<BookPriceDto> getBookPrice(Integer bookId){
 		return bookDao.getBookPrice(bookId);
+	}
+	
+	public List<BookBranchDto> getBookVer(Integer bookId){
+		return bookDao.getBookVer(bookId);
+	}
+	
+	public void auditor(Integer id, Integer status){
+		BookBranchEntity entity = new BookBranchEntity();
+		entity.setId(id);
+		entity.setStatus(status);
+		entity.setAuditorTime(new Date());
+		 bookDao.auditor(entity);
 	}
 	
 }
